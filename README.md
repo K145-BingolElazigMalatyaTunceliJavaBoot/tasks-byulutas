@@ -1,2 +1,2 @@
 # tasks-byulutas
-tasks-byulutas created by GitHub Classroom
+K145-BingolElazigMalatyaTunceliJavaBootcamp ödevleri
