@@ -1,2 +1,1 @@
-# tasks-byulutas
-K145-BingolElazigMalatyaTunceliJavaBootcamp ödevleri
+K145-BingolElazigMalatyaTunceliJavaBootcamp Ödevleri
