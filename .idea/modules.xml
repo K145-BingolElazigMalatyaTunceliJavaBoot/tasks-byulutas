@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/BirinciHaftaÖdevi/Ouestion3/Ouestion3.iml" filepath="$PROJECT_DIR$/BirinciHaftaÖdevi/Ouestion3/Ouestion3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BirinciHaftaÖdevi/Question1/Question1.iml" filepath="$PROJECT_DIR$/BirinciHaftaÖdevi/Question1/Question1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BirinciHaftaÖdevi/Question2/Question2.iml" filepath="$PROJECT_DIR$/BirinciHaftaÖdevi/Question2/Question2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BirinciHaftaÖdevi/Question4/Question4.iml" filepath="$PROJECT_DIR$/BirinciHaftaÖdevi/Question4/Question4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/UcuncuHaftaOdevi/UcuncuHaftaOdevi.iml" filepath="$PROJECT_DIR$/UcuncuHaftaOdevi/UcuncuHaftaOdevi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/tasks-byulutas.iml" filepath="$PROJECT_DIR$/.idea/tasks-byulutas.iml" />
+      <module fileurl="file://$PROJECT_DIR$/İkinciHaftaÖdevi/İkinciHaftaÖdevi.iml" filepath="$PROJECT_DIR$/İkinciHaftaÖdevi/İkinciHaftaÖdevi.iml" />
+    </modules>
+  </component>
+</project>
