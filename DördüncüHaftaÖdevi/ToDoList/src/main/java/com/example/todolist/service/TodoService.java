@@ -1,6 +1,8 @@
 package com.example.todolist.service;
 
 import com.example.todolist.config.TodoConfiguration;
+import com.example.todolist.converter.TodoConverter;
+import com.example.todolist.dto.TodoItemDto;
 import com.example.todolist.model.TodoItem;
 import com.example.todolist.repo.TodoRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import java.util.List;
 
 @Service
 public class TodoService {
+
     @Autowired
     private TodoRepo todoRepo;
     List<TodoItem> todoList;
@@ -28,48 +31,67 @@ public class TodoService {
         return todoRepo.findAll();
     }
 
-    public TodoItem save(TodoItem todoItem){
+    public TodoItem save(TodoItemDto todoItemDto){
+        TodoItem todoItem= TodoConverter.convertTodoItemDtoToTodoItem(todoItemDto);
         return todoRepo.save(todoItem);
     }
 
-    public TodoItem update(TodoItem todoItem){
+    public TodoItem update(TodoItemDto todoItemDto){
+        TodoItem todoItem= TodoConverter.convertTodoItemDtoToTodoItem(todoItemDto);
         return todoRepo.save(todoItem);
     }
     public  void  delete(Long id){
         todoRepo.deleteById(id);
     }
 
-    public List<TodoItem> findAllToDoByStatus(boolean status){
+    public List<TodoItemDto> findAllToDoByStatus(boolean status) {
         todoList = TodoConfiguration.todoList;
-        List<TodoItem> filteredToDo = new ArrayList<>();
-        for (TodoItem todo : todoList){
-            if (todo.isComplete() == status){
-                filteredToDo.add(todo);
+        List<TodoItemDto> filteredToDoDto=new ArrayList<>();
+
+        for (TodoItem todo :
+                todoList) {
+            if (todo.isComplete() == status) {
+                TodoItemDto tododto=new TodoItemDto();
+                tododto.setDescription(todo.getDescription());
+                tododto.setDay(todo.getDay());
+                tododto.setTime(todo.getTime());
+                tododto.setComplete(todo.isComplete());
+                filteredToDoDto.add(tododto);
             }
         }
-        return filteredToDo;
+        return filteredToDoDto;
     }
 
-    public List<TodoItem> findAllToDoByDay(String day){
+    public List<TodoItemDto> findAllToDoByDay(String day) {
         todoList = TodoConfiguration.todoList;
-        List<TodoItem> filteredToDo = new ArrayList<>();
+        List<TodoItemDto> filteredToDoDto = new ArrayList<>();
         for (TodoItem todo : todoList){
             if (todo.getDay() == day){
-                filteredToDo.add(todo);
+                TodoItemDto tododto=new TodoItemDto();
+                tododto.setDescription(todo.getDescription());
+                tododto.setDay(todo.getDay());
+                tododto.setTime(todo.getTime());
+                tododto.setComplete(todo.isComplete());
+                filteredToDoDto.add(tododto);
             }
         }
-        return filteredToDo;
+        return filteredToDoDto;
     }
 
-    public List<TodoItem> findAllToDoByWeekly(){
+    public List<TodoItemDto> findAllToDoByWeekly() {
         todoList = TodoConfiguration.todoList;
-        List<TodoItem> filteredToDo = new ArrayList<>();
+        List<TodoItemDto> filteredToDoDto = new ArrayList<>();
         for (TodoItem todo : todoList){
             if (todo.getDay() == "Pazartesi" || todo.getDay() == "Salı" || todo.getDay() == "Çarşamba" || todo.getDay() == "Perşembe" || todo.getDay() == "Cuma" || todo.getDay() == "Cumartesi" || todo.getDay() == "Pazar"){
-                filteredToDo.add(todo);
+                TodoItemDto tododto=new TodoItemDto();
+                tododto.setDescription(todo.getDescription());
+                tododto.setDay(todo.getDay());
+                tododto.setTime(todo.getTime());
+                tododto.setComplete(todo.isComplete());
+                filteredToDoDto.add(tododto);
             }
         }
-        return filteredToDo;
+        return filteredToDoDto;
     }
 
 }

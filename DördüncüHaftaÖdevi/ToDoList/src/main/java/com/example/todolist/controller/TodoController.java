@@ -1,5 +1,6 @@
 package com.example.todolist.controller;
 
+import com.example.todolist.dto.TodoItemDto;
 import com.example.todolist.model.TodoItem;
 import com.example.todolist.service.TodoService;
 import org.springframework.web.bind.annotation.*;
@@ -23,27 +24,27 @@ public class TodoController {
         return todoService.findAll();
     }
     @PostMapping
-    public TodoItem save(@Valid @NotNull @RequestBody TodoItem todoItem){
-        return todoService.save(todoItem);
+    public TodoItem save(@Valid @NotNull @RequestBody TodoItemDto todoItemDto){
+        return todoService.save(todoItemDto);
     }
     @PutMapping
-    public TodoItem update(@Valid @NotNull @RequestBody TodoItem todoItem){
-        return todoService.save(todoItem);
+    public TodoItem update(@Valid @NotNull @RequestBody TodoItemDto todoItemDto){
+        return todoService.save(todoItemDto);
     }
     @DeleteMapping(value = "/(id)")
     public  void  delete(@PathVariable Long id){
         todoService.delete(id);
     }
     @GetMapping("/sort-by-status")
-    public List<TodoItem> getAllToDoByStatus(@RequestParam boolean status){
+    public List<TodoItemDto> getAllToDoByStatus(@RequestParam boolean status){
         return todoService.findAllToDoByStatus(status);
     }
     @GetMapping("/sort-by-day")
-    public List<TodoItem> getAllToDoByDay(@RequestParam String day){
+    public List<TodoItemDto> getAllToDoByDay(@RequestParam String day){
         return todoService.findAllToDoByDay(day);
     }
     @GetMapping("/sort-by-weekly")
-    public List<TodoItem> getAllToDoByWeekly(){
+    public List<TodoItemDto> getAllToDoByWeekly(){
         return todoService.findAllToDoByWeekly();
     }
 }
