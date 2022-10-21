@@ -1,9 +1,7 @@
 package com.example.todolist.controller;
 
 import com.example.todolist.model.TodoItem;
-import com.example.todolist.repo.TodoRepo;
 import com.example.todolist.service.TodoService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -16,29 +14,25 @@ public class TodoController {
 
     private TodoService todoService;
 
-    @Autowired
-    private TodoRepo todoRepo;
-
-    public TodoController(TodoService todoService, TodoRepo todoRepo) {
+    public TodoController(TodoService todoService) {
         this.todoService = todoService;
-        this.todoRepo = todoRepo;
     }
 
     @GetMapping
     public List<TodoItem> findAll(){
-        return todoRepo.findAll();
+        return todoService.findAll();
     }
     @PostMapping
     public TodoItem save(@Valid @NotNull @RequestBody TodoItem todoItem){
-        return todoRepo.save(todoItem);
+        return todoService.save(todoItem);
     }
     @PutMapping
     public TodoItem update(@Valid @NotNull @RequestBody TodoItem todoItem){
-        return todoRepo.save(todoItem);
+        return todoService.save(todoItem);
     }
     @DeleteMapping(value = "/(id)")
     public  void  delete(@PathVariable Long id){
-        todoRepo.deleteById(id);
+        todoService.delete(id);
     }
     @GetMapping("/sort-by-status")
     public List<TodoItem> getAllToDoByStatus(@RequestParam boolean status){
@@ -49,7 +43,7 @@ public class TodoController {
         return todoService.findAllToDoByDay(day);
     }
     @GetMapping("/sort-by-weekly")
-    public List<TodoItem> getAllToDoByDay(){
+    public List<TodoItem> getAllToDoByWeekly(){
         return todoService.findAllToDoByWeekly();
     }
 }
